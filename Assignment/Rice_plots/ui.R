@@ -8,7 +8,7 @@
 #
 
 library(shiny)
-load("Assignment/data_from_SNP_lab.RData")
+#load("Assignment/data_from_SNP_lab.RData") do this manually.
 
 
 # Define UI for application that draws a histogram
