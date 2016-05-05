@@ -14,22 +14,22 @@ load("Assignment/data_from_SNP_lab.RData")
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
   
-  # Application title
   titlePanel("Rice plots"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
-       sliderInput("bins",
-                   "Number of bins:",
-                   min = 1,
-                   max = 50,
-                   value = 30)
-    ),
+      radioButtons("trait", #the input variable that the value will go into
+                   "Choose a trait to display:",
+                   c("Alu.Tol",
+                     "Protein.Content",
+                     "Amylose.Content",
+                     "Region",
+                     "Pericarp.color")
     
     # Show a plot of the generated distribution
     mainPanel(
        plotOutput("histPlot")
     )
   )
-))
+)))
