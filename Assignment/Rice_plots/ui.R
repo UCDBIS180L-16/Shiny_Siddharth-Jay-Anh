@@ -25,15 +25,14 @@ shinyUI(fluidPage(
                      "Protein.content",
                      "Amylose.content",
                      "Region",
-                     "Pericarp.color")
+                     "Pericarp.color",
+                     "laziness.content")
       )),
     # Show a plot of the generated distribution
     mainPanel(plotOutput("boxPlot")
     )
   )
-<<<<<<< HEAD
-))
-=======
-))))
 
->>>>>>> 73b9f7005df94c6c4a8a2b056c69f8151e5a5de5
+))
+
+
