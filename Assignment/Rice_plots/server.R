@@ -16,17 +16,17 @@ shinyServer(function(input, output) {
   output$histPlot <- renderPlot({
     
     
-    qplot(x=Alu.Tol,data=data.pheno.mds)
+    # qplot(x=Alu.Tol,data=data.pheno.mds)
     
     #multiple histograms of Alu.Tol.
     pl <- ggplot(data=data.pheno.mds,aes(x = input$trait)) #create the basic plot object
     pl <- pl + geom_histogram() #tell R that we want a histogram, with binwidth of 3
-    pl <- pl + facet_wrap(facets= ~ popID, ncol=3) # a separate plot ("facet") for each region, arranged in 3 columns
-    pl <- pl + ggtitle("Aluminum Tolerance") #add a title
+    # pl <- pl + facet_wrap(facets= ~ popID, ncol=3) # a separate plot ("facet") for each region, arranged in 3 columns
+    # pl <- pl + ggtitle("input$trait") #add a title
 
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
+    #bins <- seq(min(x), max(x), length.out = input$bins + 1)
     
-    pl + geom_histogram()
+    # pl + geom_histogram()
     
     #FOR LATER
     # #boxplot of Alu.Tol
