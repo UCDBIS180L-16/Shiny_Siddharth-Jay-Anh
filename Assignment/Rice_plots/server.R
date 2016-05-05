@@ -8,6 +8,7 @@
 #
 
 library(shiny)
+library(ggplot2)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
@@ -18,7 +19,7 @@ shinyServer(function(input, output) {
     qplot(x=Alu.Tol,data=data.pheno.mds)
     
     #multiple histograms of Alu.Tol.
-    pl <- ggplot(data=data.pheno.mds,aes(x=Alu.Tol)) #create the basic plot object
+    pl <- ggplot(data=data.pheno.mds,aes(x = input$trait)) #create the basic plot object
     pl <- pl + geom_histogram() #tell R that we want a histogram, with binwidth of 3
     pl <- pl + facet_wrap(facets= ~ popID, ncol=3) # a separate plot ("facet") for each region, arranged in 3 columns
     pl <- pl + ggtitle("Aluminum Tolerance") #add a title
