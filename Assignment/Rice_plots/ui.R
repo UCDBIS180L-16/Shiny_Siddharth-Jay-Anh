@@ -27,9 +27,10 @@ shinyUI(fluidPage(
                      "Region",
                      "Pericarp.color")
     
+      )),
+    
     # Show a plot of the generated distribution
-    mainPanel(
-       plotOutput("histPlot")
+    mainPanel(plotOutput("boxPlot")
     )
   )
-)))
+))
