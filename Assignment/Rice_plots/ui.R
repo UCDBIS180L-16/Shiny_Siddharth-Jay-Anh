@@ -8,7 +8,7 @@
 #
 
 library(shiny)
-load("Assignment/data_from_SNP_lab.RData")
+#load("Assignment/data_from_SNP_lab.RData") do this manually.
 
 
 # Define UI for application that draws a histogram
@@ -22,15 +22,14 @@ shinyUI(fluidPage(
       radioButtons("trait", #the input variable that the value will go into
                    "Choose a trait to display:",
                    c("Alu.Tol",
-                     "Protein.Content",
-                     "Amylose.Content",
+                     "Protein.content",
+                     "Amylose.content",
                      "Region",
-                     "Pericarp.color")
-    
-      )),
+                     "Pericarp.color"),
     
     # Show a plot of the generated distribution
     mainPanel(plotOutput("boxPlot")
     )
   )
-))
+))))
+
