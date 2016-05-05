@@ -8,14 +8,14 @@
 #
 
 library(shiny)
-load("data_from_SNP_lab.RData")
+load("Assignment/data_from_SNP_lab.RData")
 
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Rice"),
+  titlePanel("Rice plots"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
@@ -29,7 +29,7 @@ shinyUI(fluidPage(
     
     # Show a plot of the generated distribution
     mainPanel(
-       plotOutput("distPlot")
+       plotOutput("histPlot")
     )
   )
 ))

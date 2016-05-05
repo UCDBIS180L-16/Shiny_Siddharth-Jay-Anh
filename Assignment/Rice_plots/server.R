@@ -13,14 +13,36 @@ library(ggplot2)
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
    
-  output$distPlot <- renderPlot({
+  output$histPlot <- renderPlot({
     
-    # generate bins based on input$bins from ui.R
-    x    <- faithful[, 2] 
+    
+    qplot(x=Alu.Tol,data=data.pheno.mds)
+    
+    #multiple histograms of Alu.Tol.
+    pl <- ggplot(data=data.pheno.mds,aes(x=Alu.Tol)) #create the basic plot object
+    pl <- pl + geom_histogram() #tell R that we want a histogram, with binwidth of 3
+    pl <- pl + facet_wrap(facets= ~ popID, ncol=3) # a separate plot ("facet") for each region, arranged in 3 columns
+    pl <- pl + ggtitle("Aluminum Tolerance") #add a title
+
     bins <- seq(min(x), max(x), length.out = input$bins + 1)
     
-    # draw the histogram with the specified number of bins
-    hist(x, breaks = bins, col = 'darkgray', border = 'white')
+    pl + geom_histogram()
+    
+    #FOR LATER
+    # #boxplot of Alu.Tol
+    # qplot(x=popID,y=Alu.Tol,geom="boxplot",data=data.pheno.mds)
+    # 
+    # #BONUS violin plot
+    # v <- ggplot(data.pheno.mds, aes(popID, Alu.Tol))
+    # v + geom_violin()
+    
+    # 
+    # # generate bins based on input$bins from ui.R
+    # x    <- faithful[, 2] 
+    # bins <- seq(min(x), max(x), length.out = input$bins + 1)
+    # 
+    # # draw the histogram with the specified number of bins
+    # hist(x, breaks = bins, col = 'darkgray', border = 'white')
     
   })
   
