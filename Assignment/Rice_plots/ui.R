@@ -22,8 +22,8 @@ shinyUI(fluidPage(
       radioButtons("trait", #the input variable that the value will go into
                    "Choose a trait to display:",
                    c("Alu.Tol",
-                     "Protein.Content",
-                     "Amylose.Content",
+                     "Protein.content",
+                     "Amylose.content",
                      "Region",
                      "Pericarp.color")
     
