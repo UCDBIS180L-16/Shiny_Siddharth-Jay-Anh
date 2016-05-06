@@ -16,20 +16,23 @@ shinyUI(fluidPage(
   
   titlePanel("Rice plots"),
   
+  helpText("This application creates a multiple plots to show difference between",
+           "Rice samples.  Please use the radio box below to choose a species",
+           "for plotting"),
+  
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
-      radioButtons("trait", #the input variable that the value will go into
+      radioButtons("choice", #the input variable that the value will go into
                    "Choose a trait to display:",
                    c("Alu.Tol",
                      "Protein.content",
                      "Amylose.content",
                      "Region",
-                     "Pericarp.color",
-                     "laziness.content")
+                     "Pericarp.color")
       )),
     # Show a plot of the generated distribution
-    mainPanel(plotOutput("boxPlot")
+    mainPanel(plotOutput("Plot")
     )
   )
 
