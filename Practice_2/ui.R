@@ -23,7 +23,7 @@ shinyUI(fluidPage( #create the overall page
   # Sidebar with a radio box to input which trait will be plotted
   sidebarLayout(
     sidebarPanel(
-      radioButtons("species", #the input variable that the value will go into
+      radioButtons("Choice", #the input variable that the value will go into
                    "Choose a species to display:",
                    c("setosa",
                      "versicolor",

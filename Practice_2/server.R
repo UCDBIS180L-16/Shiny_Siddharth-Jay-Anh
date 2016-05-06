@@ -34,7 +34,7 @@ shinyServer(function(input, output) {
     
     colnames(melt.iris) <- c("species", "trait","value")
     
-    melt.iris.sub <- subset(melt.iris, species==input$species)
+    melt.iris.sub <- subset(melt.iris, species==input$Choice)
     
     # set up the plot
     pl <- ggplot(data = melt.iris.sub,
