@@ -12,12 +12,12 @@ library(ggplot2)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
-   
+
   output$Plot <- renderPlot({
 
   new <- subset(geno.pheno.mds, select = input$choice)
-  
-   pl <- ggplot(geno.pheno.mds, aes(V1,V2, color = new)) 
+
+   pl <- ggplot(geno.pheno.mds, aes(V1,V2, color = new))
 
    if(input$choice == "Pericarp.color" | input$choice == "Region")
    {
