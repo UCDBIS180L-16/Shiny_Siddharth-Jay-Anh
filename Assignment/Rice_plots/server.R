@@ -10,21 +10,21 @@
 library(shiny)
 library(ggplot2)
 
-# Define server logic required to draw a histogram
+# Define server logic required to color MDS plot
 shinyServer(function(input, output) {
    
   output$Plot <- renderPlot({
 
-  new <- subset(geno.pheno.mds, select = input$choice)
+  new <- subset(data.pheno, select = input$choice)
   
-   pl <- ggplot(geno.pheno.mds, aes(V1,V2, color = new)) 
+   pl <- ggplot(data.pheno, aes(V1,V2, color = new)) 
 
    if(input$choice == "Pericarp.color" | input$choice == "Region")
    {
-      pl + geom_point() + scale_color_brewer(palette="Set1")
+      pl + geom_point() + scale_color_brewer(palette = "Set1")
    }
 
    else
-     pl + geom_point()
+    pl + geom_point() + scale_color_gradient(low = input$onecolor, high = input$twocolor)
   })
 })
