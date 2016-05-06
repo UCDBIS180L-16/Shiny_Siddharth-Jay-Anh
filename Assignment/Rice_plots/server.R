@@ -14,14 +14,9 @@ library(ggplot2)
 shinyServer(function(input, output) {
    
   output$Plot <- renderPlot({
-    
-  selection <- input$choice 
-  
-  color <- geno.pheno.mds$selection
-  
+
   new <- subset(geno.pheno.mds, select = input$choice)
   
-
    pl <- ggplot(geno.pheno.mds, aes(V1,V2, color = new)) 
    
    if(input$choice == "Pericarp.color" | input$choice == "Region")
