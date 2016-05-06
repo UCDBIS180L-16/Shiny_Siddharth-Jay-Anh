@@ -30,7 +30,17 @@ shinyUI(fluidPage(
                      "Amylose.content",
                      "Region",
                      "Pericarp.color")
-      )),
+      ),
+      radioButtons("onecolor",
+                   "Choose a low scale color:",
+                   c("Red",
+                     "Blue")
+      ),
+      radioButtons("twocolor",
+                 "Choose a high scale color:",
+                 c("Red",
+                   "Blue")
+    )),
     # Show a plot of the generated distribution
     mainPanel(plotOutput("Plot")
     )
