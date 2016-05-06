@@ -14,27 +14,16 @@ library(ggplot2)
 shinyServer(function(input, output) {
    
   output$Plot <- renderPlot({
-<<<<<<< HEAD
 
   new <- subset(geno.pheno.mds, select = input$choice)
   
-=======
-    
-  selection <- input$choice 
-  
-  color <- geno.pheno.mds$selection
-  
-  new <- subset(geno.pheno.mds, select = input$choice)
-  
-
->>>>>>> ea7d1c726ae12bd2a904b5cc0b105eac314b2b24
    pl <- ggplot(geno.pheno.mds, aes(V1,V2, color = new)) 
-   
+
    if(input$choice == "Pericarp.color" | input$choice == "Region")
    {
       pl + geom_point() + scale_color_brewer(palette="Set1")
    }
-   
+
    else
      pl + geom_point()
   })
