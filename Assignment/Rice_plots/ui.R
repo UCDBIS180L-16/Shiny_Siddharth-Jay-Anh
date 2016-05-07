@@ -23,6 +23,13 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
+      
+      radioButtons("plot_choice",
+                   "Choose how you want to plot the data:",
+                   c("Scatterplot",
+                     "Histogram")
+      ),
+      
       radioButtons("choice", #the input variable that the value will go into
                    "Choose a trait to display:",
                    c("Alu.Tol",
@@ -31,6 +38,9 @@ shinyUI(fluidPage(
                      "Region",
                      "Pericarp.color")
       ),
+      
+      helpText("Below: For Alu.Tol, Protein.content and Amylose.content"),
+      
       radioButtons("onecolor",
                    "Choose a low scale color:",
                    c("Red",
@@ -38,8 +48,8 @@ shinyUI(fluidPage(
       ),
       radioButtons("twocolor",
                  "Choose a high scale color:",
-                 c("Red",
-                   "Blue")
+                 c("Blue",
+                   "Red")
     )),
     # Show a plot of the generated distribution
     mainPanel(plotOutput("Plot")
