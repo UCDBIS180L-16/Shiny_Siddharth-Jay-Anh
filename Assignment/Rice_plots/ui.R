@@ -8,6 +8,7 @@
 #
 
 library(shiny)
+library(shinyjs)
 #load("Assignment/data_from_SNP_lab.RData") do this manually.
 
 
@@ -39,23 +40,17 @@ shinyUI(fluidPage(
                      "Pericarp.color")
       ),
       
-      helpText("Below: For Alu.Tol, Protein.content and Amylose.content"),
+      helpText("Apply for scatterplots: For Alu.Tol, Protein.content and Amylose.content"),
       
-      radioButtons("onecolor",
-                   "Choose a low scale color:",
-                   c("Red",
-                     "Blue")
-      ),
-      radioButtons("twocolor",
-                 "Choose a high scale color:",
-                 c("Blue",
-                   "Red")
-    )),
+      colourInput("coltwo", "Select High Scale Color", "blue"),
+      colourInput("colone", "Select Low Scale Color", "red")
+      
+
+
+    ),
     # Show a plot of the generated distribution
     mainPanel(plotOutput("Plot")
     )
   )
 
 ))
-
-

@@ -48,7 +48,7 @@ shinyServer(function(input, output) {
 
     else
     {
-    pl + geom_point() + scale_color_gradient(low = input$onecolor, high = input$twocolor) + labs(title = input$choice) + theme(plot.title = element_text(size = rel(2)), axis.title.x = element_text(face="bold", colour="#990000", size=20), axis.title.y = element_text(face="bold", colour="#990000", size=20), legend.title = element_text(colour="red", size = 12, face = "bold"), legend.text = element_text(colour="blue", size = 12, face = "bold"), legend.title = element_text(colour="blue", size = 16, face = "bold"))
+    pl + geom_point() + scale_color_gradient(low = input$colone, high = input$coltwo) + labs(title = input$choice) + theme(plot.title = element_text(size = rel(2)), axis.title.x = element_text(face="bold", colour="#990000", size=20), axis.title.y = element_text(face="bold", colour="#990000", size=20), legend.title = element_text(colour="red", size = 12, face = "bold"), legend.text = element_text(colour="blue", size = 12, face = "bold"), legend.title = element_text(colour="blue", size = 16, face = "bold"))
     }
    # Goodwork on the low/high scale color line above Jay -Sid
   }
