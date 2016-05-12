@@ -31,8 +31,32 @@ shinyServer(function(input, output) {
   
     # else
     #{
-      pl + geom_violin() + labs(title = input$choice) + theme(plot.title = element_text(size = rel(2)), axis.title.x = element_text(face="bold", colour="#990000", size=20), axis.title.y = element_text(face="bold", colour="#990000", size=20), legend.title = element_text(colour="red", size = 12, face = "bold"), legend.text = element_text(colour="blue", size = 12, face = "bold"))
-    #}
+    pl <- pl + geom_violin() + labs(title = input$choice) + theme(plot.title = element_text(size = rel(2)), axis.title.x = element_text(face="bold", colour="#990000", size=20), axis.title.y = element_text(face="bold", colour="#990000", size=20), legend.title = element_text(colour="red", size = 12, face = "bold"), legend.text = element_text(colour="blue", size = 12, face = "bold"))
+    if (input$choice=="Alu.Tol")
+    {
+      pl + labs(x="Population",y="Alu.Tol")
+    }
+    else
+      if (input$choice=="Protein.content")
+      {
+        pl + labs(x="Population",y="Protein.content")
+      }
+      else
+        if (input$choice=="Amylose.content")
+        {
+          pl + labs(x="Population",y="Amylose.content")
+        }
+        else
+          if (input$choice=="Region")
+          {
+            pl + labs(x="Population",y="Region")
+          }
+          else
+            if (input$choice=="Pericarp.color")
+            {
+              pl + labs(x="Population",y="Pericarp.color")
+            }
+    
   
   }
   else
