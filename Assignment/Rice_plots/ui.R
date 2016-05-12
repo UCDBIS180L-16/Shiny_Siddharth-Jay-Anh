@@ -26,8 +26,8 @@ shinyUI(fluidPage(
       
       radioButtons("plot_choice",
                    "Choose how you want to plot the data:",
-                   c("Scatterplot",
-                     "Histogram")
+                   c("Violin",
+                     "Scatterplot")
       ),
       
       radioButtons("choice", #the input variable that the value will go into
