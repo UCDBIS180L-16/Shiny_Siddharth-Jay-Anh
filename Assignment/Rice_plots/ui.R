@@ -8,7 +8,7 @@
 #
 
 library(shiny)
-#load("Assignment/data_from_SNP_lab.RData") do this manually.
+library(shinyjs)
 
 
 # Define UI for application that draws a histogram
@@ -40,22 +40,17 @@ shinyUI(fluidPage(
       ),
       
       helpText("Below: Applies to Scatterplot only and for the following traits: Alu.Tol, Protein.content and Amylose.content"),
+
       
-      radioButtons("onecolor",
-                   "Choose a low scale color:",
-                   c("Red",
-                     "Blue")
-      ),
-      radioButtons("twocolor",
-                 "Choose a high scale color:",
-                 c("Blue",
-                   "Red")
-    )),
+      colourInput("coltwo", "Select High Scale Color", "blue"),
+      colourInput("colone", "Select Low Scale Color", "red")
+      
+
+
+    ),
     # Show a plot of the generated distribution
     mainPanel(plotOutput("Plot")
     )
   )
 
 ))
-
-
