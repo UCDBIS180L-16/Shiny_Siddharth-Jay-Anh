@@ -39,7 +39,7 @@ shinyUI(fluidPage(
                      "Pericarp.color")
       ),
       
-      helpText("Below: For Alu.Tol, Protein.content and Amylose.content"),
+      helpText("Below: Applies to Scatterplot only and for the following traits: Alu.Tol, Protein.content and Amylose.content"),
       
       radioButtons("onecolor",
                    "Choose a low scale color:",

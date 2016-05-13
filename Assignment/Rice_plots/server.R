@@ -9,37 +9,55 @@
 
 library(shiny)
 library(ggplot2)
-
+library(jsonlite)
+#load("Assignment/Rice_plots/rice_data.Rdata")
 # Define server logic required to color MDS plot
 shinyServer(function(input, output) {
 
   output$Plot <- renderPlot({
     #set variable to an object to use for coloring.
-    trait_color <- subset(data.pheno.mds, select = input$choice)  
+    trait_color <- subset(data.pheno.mds, select = input$choice)
+    pericarp <- subset(data.pheno.mds, select = Pericarp.color)
+    region <- subset(data.pheno.mds, select = Region)
+    
     
   #Plot a Violin plot  
   if( input$plot_choice == "Violin" )
   {
-    # trait_color <- subset(data.pheno.mds, select = input$choice)
-    # popID_trait <- subset(data.pheno.mds, select = popID)
-    pl <- ggplot(data.pheno.mds, aes(popID, trait_color))
-    
+    # pl <- ggplot(data.pheno.mds, aes(popID, trait_color))
+    # 
     # if(input$choice == "Pericarp.color" | input$choice == "Region")
     # {
     #   pl + geom_violin() + labs(title = input$choice) + theme(plot.title = element_text(size = rel(2)), axis.title.x = element_text(face="bold", colour="#990000", size=20), axis.title.y = element_text(face="bold", colour="#990000", size=20), legend.title = element_text(colour="red", size = 12, face = "bold"), legend.text = element_text(colour="blue", size = 12, face = "bold"))
     # }
+    # 
+    # # else
+    # #{
+    #   pl + geom_violin() + labs(title = input$choice) + ylab("Trait Value") +theme(plot.title = element_text(size = rel(2)), axis.title.x = element_text(face="bold", colour="#990000", size=20), axis.title.y = element_text(face="bold", colour="#990000", size=20), legend.title = element_text(colour="red", size = 12, face = "bold"), legend.text = element_text(colour="blue", size = 12, face = "bold"))
+    # #}
   
-    # else
-    #{
-      pl + geom_violin() + labs(title = input$choice) + theme(plot.title = element_text(size = rel(2)), axis.title.x = element_text(face="bold", colour="#990000", size=20), axis.title.y = element_text(face="bold", colour="#990000", size=20), legend.title = element_text(colour="red", size = 12, face = "bold"), legend.text = element_text(colour="blue", size = 12, face = "bold"))
-    #}
-  
+      if(input$choice == "Pericarp.color")
+      {
+        pl <- ggplot(data.pheno.mds, aes(popID, pericarp)) 
+        pl + labs(title = "Pericarp.color") + theme(plot.title = element_text(size = rel(2)), axis.title.x = element_text(face="bold", colour="#990000", size=20), axis.title.y = element_text(face="bold", colour="#990000", size=20), legend.title = element_text(colour="red", size = 12, face = "bold"), legend.text = element_text(colour="blue", size = 12, face = "bold"))
+      }
+      else
+        if(input$choice == "Region")
+        {
+          pl <- ggplot(data.pheno.mds, aes(popID, factor(region)))
+          pl +  labs(title = "Region") + theme(plot.title = element_text(size = rel(2)), axis.title.x = element_text(face="bold", colour="#990000", size=20), axis.title.y = element_text(face="bold", colour="#990000", size=20), legend.title = element_text(colour="red", size = 12, face = "bold"), legend.text = element_text(colour="blue", size = 12, face = "bold"))
+        }
+      else
+        pl <- ggplot(data.pheno.mds, aes(popID, trait_color))
+        pl + geom_violin() + labs(title = input$choice) + ylab("Trait Value") +theme(plot.title = element_text(size = rel(2)), axis.title.x = element_text(face="bold", colour="#990000", size=20), axis.title.y = element_text(face="bold", colour="#990000", size=20), legend.title = element_text(colour="red", size = 12, face = "bold"), legend.text = element_text(colour="blue", size = 12, face = "bold"))
+      
+      
   }
   else
   #Plot a scatterplot
   if( input$plot_choice == "Scatterplot" )
   {
-    pl <- ggplot(geno.pheno.mds, aes(V1,V2, color = trait_color))
+    pl <- ggplot(data.pheno.mds, aes(V1,V2, color = trait_color))
 
     if(input$choice == "Pericarp.color" | input$choice == "Region")
     {
