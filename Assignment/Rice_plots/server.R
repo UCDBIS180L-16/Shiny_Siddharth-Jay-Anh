@@ -17,8 +17,8 @@ shinyServer(function(input, output) {
   output$Plot <- renderPlot({
     #set variable to an object to use for coloring.
     trait_color <- subset(data.pheno.mds, select = input$choice)
-    pericarp <- subset(data.pheno.mds, select = Pericarp.color)
-    region <- subset(data.pheno.mds, select = Region)
+    pericarp <- as.factor(data.pheno.mds$Pericarp.color)
+    region <- as.factor(data.pheno.mds$Region)
 
   #Plot a Violin plot  
   if( input$plot_choice == "Violin" )
@@ -26,13 +26,13 @@ shinyServer(function(input, output) {
       if(input$choice == "Pericarp.color")
       {
         pl <- ggplot(data.pheno.mds, aes(popID, pericarp)) 
-        pl + labs(title = "Pericarp.color") + theme(plot.title = element_text(size = rel(2)), axis.title.x = element_text(face="bold", colour="#990000", size=20), axis.title.y = element_text(face="bold", colour="#990000", size=20), legend.title = element_text(colour="red", size = 12, face = "bold"), legend.text = element_text(colour="blue", size = 12, face = "bold"))
+        pl + labs(title = "Pericarp.color") + theme(plot.title = element_text(size = rel(2)), axis.title.x = element_text(face="bold", colour="#990000", size=20), axis.title.y = element_text(face="bold", colour="#990000", size=20), legend.title = element_text(colour="red", size = 12, face = "bold"), legend.text = element_text(colour="blue", size = 12, face = "bold")) + scale_color_brewer(palette="Dark2")
       }
       else
         if(input$choice == "Region")
         {
-          pl <- ggplot(data.pheno.mds, aes(popID, factor(region)))
-          pl +  labs(title = "Region") + theme(plot.title = element_text(size = rel(2)), axis.title.x = element_text(face="bold", colour="#990000", size=20), axis.title.y = element_text(face="bold", colour="#990000", size=20), legend.title = element_text(colour="red", size = 12, face = "bold"), legend.text = element_text(colour="blue", size = 12, face = "bold"))
+          pl <- ggplot(data.pheno.mds, aes(popID, region))
+          pl +  labs(title = "Region") + theme(plot.title = element_text(size = rel(2)), axis.title.x = element_text(face="bold", colour="#990000", size=20), axis.title.y = element_text(face="bold", colour="#990000", size=20), legend.title = element_text(colour="red", size = 12, face = "bold"), legend.text = element_text(colour="blue", size = 12, face = "bold")) + scale_color_brewer(palette = "Set1")
         }
       else
         pl <- ggplot(data.pheno.mds, aes(popID, trait_color))
