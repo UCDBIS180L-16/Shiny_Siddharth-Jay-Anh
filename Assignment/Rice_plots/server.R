@@ -40,7 +40,7 @@ shinyServer(function(input, output) {
       
       
   }
-#Anh, all you did was copy and rewrite my code above in a repetative form. Instead of using a variable to name the plots, you wrote out everything manually to make it look like you did something. I deleted that garbage... 
+#Anh, instead of using a variable to name the plots, you wrote out everything manually. My code uses a variable and I deleted yours... 
     
     else
       #Plot a scatterplot
